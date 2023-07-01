@@ -1,0 +1,18 @@
+.noUi-horizontal .noUi-handle{
+    display: none;
+} 
+.range{
+    width: 200px;
+}
+.noUi-connect{    
+    background-color:green;   
+}
+.noUi-target{
+    border-radius: 10px;
+}
+.range__input{
+    position: absolute;
+    left: 120px;
+    width: 50px;
+    border: none;
+}
