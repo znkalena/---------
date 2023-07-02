@@ -1,0 +1,20 @@
+.app__form{
+    display: flex;
+    flex-direction: column;
+    gap: 30px;
+    
+}
+legend{
+    font-size: 18px;
+    color: #a9a9a9;
+    position: relative;
+}
+legend::after{
+    content: '';
+    position: absolute;
+    width: 540px;
+    height: 2px;
+    background-color: #a9a9a9;
+    left: 180px;
+    top: 10px;
+}

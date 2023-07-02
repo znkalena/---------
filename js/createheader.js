@@ -1,7 +1,7 @@
 import {createElement} from './createelement.js'
 const app = document.querySelector('.app')
 
-const createHeader = () => {
+export const createHeader = (parent) => {
     const conteiner =createElement('div',{
         className :'header__conteiner',
     });
@@ -29,12 +29,11 @@ const createHeader = () => {
             href:'#',
             textContent:`Раздел ${i}`,
         });
-        item[i].append(link);
-        list.append(item[i]);
+        item.append(link);
+        list.append(item);
     }
 
     conteiner.append(list);    
-    console.log(conteiner);
-    return conteiner;
+    parent.append(conteiner);    
 }
 
