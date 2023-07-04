@@ -24,7 +24,7 @@
     background-color: rgb(6, 160, 98);
 }
 .wrappagin__item-active {
-    background-color:rgb(127, 255, 129);
+    background-color:#96df40;
 }
 .wrappagin__item-active ~ li {
     background-color:rgb(241, 237, 232);    

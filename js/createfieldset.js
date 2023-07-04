@@ -4,62 +4,79 @@ export const createFieldset =(form) =>{
 const fieldset = createElement('fieldset',{
     className:'form__field fieldset',
 });
-
-const labelSurname =createElement('label',{
-    className:'fieldset__label',    
+const fieldsetBlockSurname = createElement('div',{
+    className:'fieldset__block block'
+});
+const labelSurname =createElement('label',{        
     htmlFor:'surname',
 });
-const spanSurname =createElement('span',{
+const titleSurname =createElement('h3',{
     textContent:'Фамилия',
 });
 const surname =createElement('input',{
     type:'text',    
     id:'surname',
+    name:'surname',
 });
-labelSurname.append(spanSurname,surname);
-fieldset.append(labelSurname);
+labelSurname.append(surname);
+fieldsetBlockSurname.append(titleSurname,labelSurname)
+fieldset.append(fieldsetBlockSurname);
 
-
-const labelName =createElement('label',{
-    className:'fieldset__label',
+const labelName =createElement('label',{    
     htmlFor:'name',  
 });
-const spanName =createElement('span',{
+const fieldsetBlockName = createElement('div',{
+    className:'fieldset__block block'
+});
+const titleName =createElement('h3',{
     textContent:'Имя',
 });
 const name =createElement('input',{
     type:'text',
     id:'name',
+    name:'name',
 });
-labelName.append(spanName,name);
-fieldset.append(labelName);
+labelName.append(name);
+fieldsetBlockName.append(titleName,labelName);
+fieldset.append(fieldsetBlockName);
 
-const labelSecondSurname =createElement('label',{
-    className:'fieldset__label',
+const labelSecondSurname =createElement('label',{   
     htmlFor:'surnamesecond',    
 });
-const spanSecondSurname =createElement('span',{
+const fieldsetBlockSecondSurname = createElement('div',{
+    className:'fieldset__block block'
+});
+const titleSecondSurname =createElement('h3',{
     textContent:'Отчество',
 });
 const secondSurname =createElement('input',{
     type:'text',
     id:'surnamesecond',
+    name:'surnamesecond'
 });
-labelSecondSurname.append(spanSecondSurname,secondSurname);
-fieldset.appendChild(labelSecondSurname);
+labelSecondSurname.append(secondSurname);
+fieldsetBlockSecondSurname.append(titleSecondSurname,labelSecondSurname);
+fieldset.appendChild(fieldsetBlockSecondSurname);
 
 
-const labelChangeSername =createElement('label',{
-    className:'fieldset__label changeSurname',
-    textContent:'Меняли фамилию?',
-    
+const titleChangeSurname =createElement('h3',{
+    className:'block__label',
+    textContent:'Меняли фамилию?',    
+});
+const fieldsetBlock = createElement('div',{
+    className:'fieldset__block block block-change'
 });
 const wrapRadios = createElement('div',{
-    className:'changeSurname__wrap'
+    className:'block__wrap',
+});
+const labelYes =createElement('label',{
+    htmlFor:'yes',
+});
+const labelNo =createElement('label',{
+    htmlFor:'no',
 });
 const spanRadioYes =createElement('span',{
-    textContent:'Да',
-    htmlFor:'yes',
+    textContent:'Да',    
     });
 const inputRadioYes =createElement('input',{    
     type:'radio',
@@ -68,82 +85,103 @@ const inputRadioYes =createElement('input',{
 });
 
 const spanRadioNo =createElement('span',{
-    textContent:'Нет',
-    htmlFor:'no',
+    textContent:'Нет',    
 });
 const inputRadioNo =createElement('input',{    
     type:'radio',
     name:'Нет',
-    id:'no'    
+    id:'no',
+    checked:true,    
 });
+labelYes.append(inputRadioYes,spanRadioYes);
+labelNo.append(inputRadioNo,spanRadioNo);
+wrapRadios.append(labelYes,labelNo);
+fieldsetBlock.append(titleChangeSurname,wrapRadios);
+fieldset.append(fieldsetBlock);
 
-wrapRadios.append(inputRadioYes,spanRadioYes,inputRadioNo,spanRadioNo);
-labelChangeSername.append(wrapRadios);
-fieldset.append(labelChangeSername);
-
-const labelGender =createElement('label',{
-    className:'fieldset__label',
+const titleChangeGender =createElement('h3',{
+    className:'block__label',
     textContent:'Пол',
 });
-const wrapCheckboxGender = createElement('div',{
-    className:'changeGender__wrap'
+const fieldsetBlockGender = createElement('div',{
+    className:'fieldset__block block block-change'
+});
+const wrapRadioGender = createElement('div',{
+    className:'block__wrap',
 });
 const spanCheckMen =createElement('span',{
     textContent:'Муж',
 });
 const checkMen =createElement('input',{
     type:'checkbox',
-    value:'Муж',    
+    name:'Муж',
+    id:'men',
+    checked:'true',    
+});
+const labelMen =createElement('label',{
+    htmlFor:'men',
+});
+const labelWomen =createElement('label',{
+    htmlFor:'women',
 });
 const spanCheckWomen =createElement('span',{
     textContent:'Жен',
 });
 const checkWomen =createElement('input',{
     type:'checkbox',
-    value:'Жен',    
+    name:'Жен',
+    id:'women',    
 });
-wrapCheckboxGender.append(checkWomen,spanCheckWomen,checkMen,spanCheckMen)
-labelGender.append(wrapCheckboxGender);
-fieldset.append(labelGender);
+labelMen.append(checkMen,spanCheckMen);
+labelWomen.append(checkWomen,spanCheckWomen);
+wrapRadioGender.append(labelMen,labelWomen);
+fieldsetBlockGender.append(titleChangeGender,wrapRadioGender);
+fieldset.append(fieldsetBlockGender);
 
-const labelMarried =createElement('label',{
+const fieldsetBlockMarried = createElement('div',{
+    className:'fieldset__block block block-married'
+});
+const titleMarried =createElement('h3',{
     className:'fieldset__label',
-    textContent:'Семейное положение',
-    htmlFor:'married'
+    textContent:'Семейное положение',    
 });
 const selectMarried =createElement('select',{
-    className:'fieldset__select',
-    id:'married'   
+    className:'block__select',
+    htmlFor:'married'   
 });
 const optionMarried =createElement('option',{
     value:'value1',
-    textContent:'женат/замужем',
+    textContent:'женат/замужем',    
+    id:'married'
 });
 selectMarried.append(optionMarried);
-labelMarried.append(selectMarried);
-fieldset.append(labelMarried);
+fieldsetBlockMarried.append(titleMarried,selectMarried);
+fieldset.append(fieldsetBlockMarried);
 
-const labelMigration =createElement('label',{
-    className:'fieldset__label',
-    textContent:'Гражданство',
-    htmlFor:'migrait'
+const fieldsetBlockMigration = createElement('div',{
+    className:'fieldset__block block block-migrate'
+});
+const titleMigration =createElement('h3',{    
+    textContent:'Гражданство',    
 });
 const selectMigration =createElement('select',{
     className:'fieldset__select',
-    id:'migrait',   
+    htmlFor:'migrate'  
 });
 const optionMigration =createElement('option',{
     value:'Российская федерация',
     textContent:'Российская федерация',
+    id:'migrate',
 });
 selectMigration.append(optionMigration);
-labelMigration.append(selectMigration);
-fieldset.append(labelMigration);
+fieldsetBlockMigration.append(titleMigration,selectMigration);
+fieldset.append(fieldsetBlockMigration);
 
-const labelBirthday =createElement('label',{
-    className:'fieldset__label birthday',
-    textContent:'Дата рождения',
-    htmlFor:'birthday',
+const fieldsetBlockBirthday = createElement('div',{
+    className:'fieldset__block block'
+});
+const titleBirthday =createElement('label',{    
+    textContent:'Дата рождения',    
 });
 const wrapSelectBirthday =createElement('div',{
     className:'birthday__wrap',
@@ -181,14 +219,18 @@ for(let i=1966;i<=2023;i++){
     selectYear.append(optionYear);
 } 
     wrapSelectBirthday.append(selectDay,selectMonth,selectYear)
-    labelBirthday.append(wrapSelectBirthday);
-    fieldset.append(labelBirthday);
+    fieldsetBlockBirthday.append(titleBirthday,wrapSelectBirthday);
+    fieldset.append(fieldsetBlockBirthday);
 
-const labelPlace =createElement('label',{
-        className:'fieldset__label labelplace',
-        textContent:'Место рождения',
-        htmlId:'place',
+const fieldsetBlockPlace = createElement('div',{
+    className:'fieldset__block block block-place'
+});
+const titlePlace =createElement('h3',{        
+        textContent:'Место рождения',       
     });
+const labelPlace =createElement('label',{
+    htmlFor:'place'
+})    
 const place =createElement('input',{
         type:'text',
         id:'place',       
@@ -196,8 +238,9 @@ const place =createElement('input',{
 const spanPlace =createElement('span',{
         textContent:'Например,Россия,Комсомольск-на-Амуре',
     });
-    labelPlace.append(place,spanPlace)    
-    fieldset.append(labelPlace);    
+    labelPlace.append(place,spanPlace);
+    fieldsetBlockPlace.append(titlePlace,labelPlace);    
+    fieldset.append(fieldsetBlockPlace);    
 
 form.append(fieldset);
 
